@@ -4,6 +4,7 @@ import 'package:kiwy_app/core/constants/app_constants.dart';
 import 'package:kiwy_app/core/constants/globals.dart';
 import 'package:kiwy_app/core/init/widget/shape/custom_shape_border.dart';
 import 'package:kiwy_app/features/view/header.dart';
+import 'package:kiwy_app/features/view/intro.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -65,11 +66,21 @@ class Home extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Header(),
-          ],
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bg.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Header(),
+              Wrap(),
+              const IntroPage(),
+            ],
+          ),
         ),
       ),
     );

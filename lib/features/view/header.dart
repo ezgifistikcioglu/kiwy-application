@@ -68,56 +68,59 @@ class _HeaderRowState extends State<HeaderRow> {
         Condition.largerThan(name: MOBILE),
       ],
       child: Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(width: width / 8),
-            InkWell(
-              onHover: (value) {
-                setState(() {
-                  value ? isHovering[0] = true : isHovering[0] = false;
-                });
-              },
-              onTap: () {},
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _leftAppBarTexts("Shop", 0),
-                  _sizedBoxFive,
-                  _forShowingAnUnderlineOnHover(0)
-                ],
-              ),
-            ),
-            SizedBox(width: width / 20),
-            InkWell(
-              onHover: (value) {
-                setState(() {
-                  value ? isHovering[1] = true : isHovering[1] = false;
-                });
-              },
-              onTap: () {},
-              child: _leftAppBarTexts('About', 1),
-            ),
-            SizedBox(width: width / 20),
-            InkWell(
-              onHover: (value) {
-                setState(() {
-                  value ? isHovering[2] = true : isHovering[2] = false;
-                });
-              },
-              onTap: () {},
-              child: _leftAppBarTexts('Reviews', 2),
-            ),
-            Expanded(
-              child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                _signUpAndLoginText('Sign Up'),
-                SizedBox(
-                  width: width / 40,
+        child: Padding(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.01),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(width: width / 8),
+              InkWell(
+                onHover: (value) {
+                  setState(() {
+                    value ? isHovering[0] = true : isHovering[0] = false;
+                  });
+                },
+                onTap: () {},
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _leftAppBarTexts("Shop", 0),
+                    _sizedBoxFive,
+                    _forShowingAnUnderlineOnHover(0)
+                  ],
                 ),
-                _signUpAndLoginText('Login'),
-              ]),
-            ),
-          ],
+              ),
+              SizedBox(width: width / 20),
+              InkWell(
+                onHover: (value) {
+                  setState(() {
+                    value ? isHovering[1] = true : isHovering[1] = false;
+                  });
+                },
+                onTap: () {},
+                child: _leftAppBarTexts('About', 1),
+              ),
+              SizedBox(width: width / 20),
+              InkWell(
+                onHover: (value) {
+                  setState(() {
+                    value ? isHovering[2] = true : isHovering[2] = false;
+                  });
+                },
+                onTap: () {},
+                child: _leftAppBarTexts('Reviews', 2),
+              ),
+              Expanded(
+                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  _signUpAndLoginText('Sign Up'),
+                  SizedBox(
+                    width: width / 40,
+                  ),
+                  _signUpAndLoginText('Login'),
+                ]),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -129,7 +132,7 @@ class _HeaderRowState extends State<HeaderRow> {
       child: Text(
         text,
         style: const TextStyle(
-            color: kSecondaryColor, fontSize: 20, fontWeight: FontWeight.bold),
+            color: kPrimaryColor, fontSize: 20, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -138,7 +141,7 @@ class _HeaderRowState extends State<HeaderRow> {
     return Text(
       text,
       style: TextStyle(
-          color: isHovering[index] ? kCaptionColor : kSecondaryColor,
+          color: isHovering[index] ? kCaptionColor : kPrimaryColor,
           fontSize: 20,
           fontWeight: FontWeight.bold),
     );
@@ -167,33 +170,35 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: kPrimaryColor,
+      color: kSecondarColor,
       shape: const CustomShapeBorder(curveHeight),
       borderOnForeground: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: ScreenHelper(
         desktop: Padding(
           padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.08),
-          child: buildHeader(),
+              vertical: MediaQuery.of(context).size.height * 0.02),
+          child: buildHeader(context),
         ),
         // We will make this in a bit
         mobile: buildMobileHeader(context),
-        tablet: buildHeader(),
+        tablet: buildHeader(context),
       ),
     );
   }
 
   // Lets plan for mobile and smaller width screens
-  Widget buildHeader() {
+  Widget buildHeader(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
-          HeaderLogo(),
-          HeaderRow(),
-        ],
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            HeaderLogo(),
+            HeaderRow(),
+          ],
+        ),
       ),
     );
   }
