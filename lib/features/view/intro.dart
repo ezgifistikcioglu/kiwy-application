@@ -22,7 +22,7 @@ class IntroPage extends StatelessWidget {
             children: [
               Positioned(
                 left: 10,
-                child: _cardContainer(_knowledgeCard(), kDesktopMaxWidth * 0.4,
+                child: _cardContainer(_knowledgeCard, kDesktopMaxWidth * 0.4,
                     kDesktopMaxWidth * 0.3, Alignment.topLeft),
               ),
               Center(
@@ -41,7 +41,7 @@ class IntroPage extends StatelessWidget {
                 bottom: 10,
                 left: 20,
                 child: _cardContainer(
-                    _customCard(kSecondarColor, _leftTeaColumnForCard()),
+                    _customCard(kSecondarColor, _leftTeaColumnForCard),
                     kDesktopMaxWidth * 0.4,
                     kDesktopMaxWidth * 0.4,
                     Alignment.bottomLeft),
@@ -54,8 +54,7 @@ class IntroPage extends StatelessWidget {
                     height: kDesktopMaxWidth * 0.4,
                     padding: const EdgeInsets.all(8.0),
                     child: _cardContainer(
-                        _customCard(
-                            kSecondarColor, _rightCapsuleColumnForCard()),
+                        _customCard(kSecondarColor, _rightCapsuleColumnForCard),
                         kDesktopMaxWidth * 0.4,
                         kDesktopMaxWidth * 0.4,
                         Alignment.topRight)),
@@ -91,7 +90,7 @@ class IntroPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _cardContainer(
-                      _knowledgeCard(),
+                      _knowledgeCard,
                       getMobileMaxWidth(context),
                       getMobileMaxWidth(context),
                       Alignment.topLeft,
@@ -99,7 +98,7 @@ class IntroPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: _cardContainer(
-                      _customCard(kSecondarColor, _leftTeaColumnForCard()),
+                      _customCard(kSecondarColor, _leftTeaColumnForCard),
                       getMobileMaxWidth(context),
                       getMobileMaxWidth(context),
                       Alignment.bottomLeft,
@@ -147,7 +146,7 @@ class IntroPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   _cardContainer(
-                    _customCard(kSecondarColor, _rightCapsuleColumnForCard()),
+                    _customCard(kSecondarColor, _rightCapsuleColumnForCard),
                     getMobileMaxWidth(context),
                     getMobileMaxWidth(context),
                     Alignment.bottomLeft,
@@ -170,7 +169,7 @@ class IntroPage extends StatelessWidget {
                 top: 20,
                 left: 10,
                 child: _cardContainer(
-                  _knowledgeCard(),
+                  _knowledgeCard,
                   kTabletMaxWidth * 0.4,
                   kTabletMaxWidth * 0.3,
                   Alignment.topLeft,
@@ -192,7 +191,7 @@ class IntroPage extends StatelessWidget {
                 bottom: 20,
                 left: 20,
                 child: _cardContainer(
-                    _customCard(kSecondarColor, _leftTeaColumnForCard()),
+                    _customCard(kSecondarColor, _leftTeaColumnForCard),
                     kTabletMaxWidth * 0.4,
                     kTabletMaxWidth * 0.4,
                     Alignment.bottomLeft),
@@ -205,8 +204,7 @@ class IntroPage extends StatelessWidget {
                     height: kTabletMaxWidth * 0.4,
                     padding: const EdgeInsets.all(8.0),
                     child: _cardContainer(
-                        _customCard(
-                            kSecondarColor, _rightCapsuleColumnForCard()),
+                        _customCard(kSecondarColor, _rightCapsuleColumnForCard),
                         kTabletMaxWidth * 0.4,
                         kTabletMaxWidth * 0.4,
                         Alignment.topRight)),
@@ -219,7 +217,7 @@ class IntroPage extends StatelessWidget {
     );
   }
 
-  Container _cardContainer(Widget? child, double cWidth, double cHeight,
+  Widget _cardContainer(Widget? child, double cWidth, double cHeight,
           AlignmentGeometry alignment) =>
       Container(
           alignment: alignment,
@@ -228,7 +226,7 @@ class IntroPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: child);
 
-  Column _leftTeaColumnForCard() => Column(
+  Widget get _leftTeaColumnForCard => Column(
         children: [
           _cardListTile(Icons.medication, 'KIWY LEMON TEA', 'To your health',
               kPrimaryColor, kPrimaryColor, kCaptionColor),
@@ -236,7 +234,7 @@ class IntroPage extends StatelessWidget {
         ],
       );
 
-  Card _customCard(Color? color, Widget? child) => Card(
+  Widget _customCard(Color? color, Widget? child) => Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
@@ -246,7 +244,7 @@ class IntroPage extends StatelessWidget {
         child: child,
       );
 
-  Column _rightCapsuleColumnForCard() => Column(
+  Widget get _rightCapsuleColumnForCard => Column(
         children: [
           _cardListTile(Icons.medication, 'KIWY CAPSULE', '', kPrimaryColor,
               kPrimaryColor, kCaptionColor),
@@ -254,7 +252,7 @@ class IntroPage extends StatelessWidget {
         ],
       );
 
-  Expanded _cardListTile(IconData? icon, String titleText, String? subtitleText,
+  Widget _cardListTile(IconData? icon, String titleText, String? subtitleText,
       Color? iconColor, Color? titleColor, Color? subtitleColor) {
     return Expanded(
       flex: 1,
@@ -275,7 +273,7 @@ class IntroPage extends StatelessWidget {
     );
   }
 
-  Expanded _imageExpanded(String image) {
+  Widget _imageExpanded(String image) {
     return Expanded(
       flex: 5,
       child: Image.asset(
@@ -285,7 +283,7 @@ class IntroPage extends StatelessWidget {
     );
   }
 
-  Row _introLeaf(BuildContext context) => Row(
+  Widget _introLeaf(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -306,7 +304,7 @@ class IntroPage extends StatelessWidget {
         ],
       );
 
-  Card _knowledgeCard() => Card(
+  Widget get _knowledgeCard => Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
@@ -315,26 +313,24 @@ class IntroPage extends StatelessWidget {
         elevation: 10,
         child: Column(
           children: [
-            _knowledgeCardListTile(),
-            _knowledgeCardListTile(),
+            _knowledgeCardListTile,
+            _knowledgeCardListTile,
           ],
         ),
       );
 
-  ListTile _knowledgeCardListTile() {
-    return const ListTile(
-      leading: Icon(
-        Icons.run_circle_outlined,
-        color: kPrimaryColor,
-      ),
-      title: Text(
-        'Lorem Ipsum',
-        style: TextStyle(color: kPrimaryColor),
-      ),
-      subtitle: Text(
-        'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-        style: TextStyle(color: kCaptionColor),
-      ),
-    );
-  }
+  Widget get _knowledgeCardListTile => const ListTile(
+        leading: Icon(
+          Icons.run_circle_outlined,
+          color: kPrimaryColor,
+        ),
+        title: Text(
+          'Lorem Ipsum',
+          style: TextStyle(color: kPrimaryColor),
+        ),
+        subtitle: Text(
+          'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+          style: TextStyle(color: kCaptionColor),
+        ),
+      );
 }

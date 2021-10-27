@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 const Color kPrimaryColor = Color.fromRGBO(255, 183, 3, 1);
 const Color kSecondaryColor = Color.fromRGBO(96, 108, 56, 1);
 const Color kSecondarColor = Color.fromRGBO(40, 54, 24, 1);
-const Color kBackgroundColor = Color.fromRGBO(113, 63, 71, 1);
+const Color kBackgroundColor = Color.fromRGBO(196, 128, 4, 1);
+const Color kPinkColor = Color.fromRGBO(113, 63, 71, 1);
 const Color kDangerColor = Color.fromRGBO(249, 77, 30, 1);
 const Color kCaptionColor = Color.fromRGBO(166, 177, 187, 1);
 const Color kBlackColor = Color.fromRGBO(0, 0, 0, 1);
+const Color kGrayColor = Color.fromRGBO(163, 177, 187, 1);
 
 /// Lets replace all static sizes
 const double kDesktopMaxWidth = 1000.0;
@@ -16,3 +18,7 @@ double getMobileMaxWidth(BuildContext context) =>
 
 /// Strings
 const curveHeight = 30.0;
+
+/// SizedBox
+SizedBox get sizedBoxFive => const SizedBox(height: 5);
+SizedBox get sizedBoxTwenty => const SizedBox(height: 20);

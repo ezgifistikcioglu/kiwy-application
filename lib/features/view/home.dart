@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:kiwy_app/core/constants/app_constants.dart';
 import 'package:kiwy_app/core/constants/globals.dart';
 import 'package:kiwy_app/core/init/widget/shape/custom_shape_border.dart';
+import 'package:kiwy_app/features/view/bottombar/bottom_bar.dart';
 import 'package:kiwy_app/features/view/header.dart';
 import 'package:kiwy_app/features/view/intro.dart';
 
@@ -74,6 +75,10 @@ class Home extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.01,
             ),
             const IntroPage(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
+            const BottomBar(),
           ],
         ),
       ),

@@ -85,7 +85,7 @@ class _HeaderRowState extends State<HeaderRow> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     _leftAppBarTexts("Shop", 0),
-                    _sizedBoxFive,
+                    sizedBoxFive,
                     _forShowingAnUnderlineOnHover(0)
                   ],
                 ),
@@ -126,7 +126,7 @@ class _HeaderRowState extends State<HeaderRow> {
     );
   }
 
-  InkWell _signUpAndLoginText(String text) {
+  Widget _signUpAndLoginText(String text) {
     return InkWell(
       onTap: () {},
       child: Text(
@@ -137,7 +137,7 @@ class _HeaderRowState extends State<HeaderRow> {
     );
   }
 
-  Text _leftAppBarTexts(String text, int index) {
+  Widget _leftAppBarTexts(String text, int index) {
     return Text(
       text,
       style: TextStyle(
@@ -147,9 +147,7 @@ class _HeaderRowState extends State<HeaderRow> {
     );
   }
 
-  SizedBox get _sizedBoxFive => const SizedBox(height: 5);
-
-  Visibility _forShowingAnUnderlineOnHover(int index) {
+  Widget _forShowingAnUnderlineOnHover(int index) {
     return Visibility(
       maintainAnimation: true,
       maintainState: true,
