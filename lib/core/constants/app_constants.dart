@@ -12,7 +12,7 @@ const Color kBlackColor = Color.fromRGBO(0, 0, 0, 1);
 const double kDesktopMaxWidth = 1000.0;
 const double kTabletMaxWidth = 760.0;
 double getMobileMaxWidth(BuildContext context) =>
-    MediaQuery.of(context).size.width * .7;
+    MediaQuery.of(context).size.width * 0.5;
 
 /// Strings
 const curveHeight = 30.0;

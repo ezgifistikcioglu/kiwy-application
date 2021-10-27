@@ -175,7 +175,7 @@ class Header extends StatelessWidget {
       borderOnForeground: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: ScreenHelper(
-        desktop: Padding(
+        web: Padding(
           padding: EdgeInsets.symmetric(
               vertical: MediaQuery.of(context).size.height * 0.02),
           child: buildHeader(context),

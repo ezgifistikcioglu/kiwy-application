@@ -66,21 +66,15 @@ class Home extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
-              fit: BoxFit.cover,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Header(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Header(),
-              Wrap(),
-              const IntroPage(),
-            ],
-          ),
+            const IntroPage(),
+          ],
         ),
       ),
     );
