@@ -41,7 +41,7 @@ class IntroPage extends StatelessWidget {
                 bottom: 10,
                 left: 20,
                 child: _cardContainer(
-                    _customCard(kSecondarColor, _leftTeaColumnForCard),
+                    _customCard(kSecondarColor, _leftTeaColumnForCard(context)),
                     kDesktopMaxWidth * 0.4,
                     kDesktopMaxWidth * 0.4,
                     Alignment.bottomLeft),
@@ -54,7 +54,8 @@ class IntroPage extends StatelessWidget {
                     height: kDesktopMaxWidth * 0.4,
                     padding: const EdgeInsets.all(8.0),
                     child: _cardContainer(
-                        _customCard(kSecondarColor, _rightCapsuleColumnForCard),
+                        _customCard(kSecondarColor,
+                            _rightCapsuleColumnForCard(context)),
                         kDesktopMaxWidth * 0.4,
                         kDesktopMaxWidth * 0.4,
                         Alignment.topRight)),
@@ -64,26 +65,31 @@ class IntroPage extends StatelessWidget {
           ),
         ),
         mobile: Container(
-          padding: const EdgeInsets.all(4.0),
+          padding:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.06),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/bg.jpg"),
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
             ),
           ),
           child: Stack(
+            fit: StackFit.loose,
+            alignment: Alignment.topRight,
             children: [
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: const [
+                  Expanded(
+                    flex: 2,
+                    child: Text(
                       'The Magic Power of Tea and Capsule',
                       style:
                           TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,16 +104,14 @@ class IntroPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: _cardContainer(
-                      _customCard(kSecondarColor, _leftTeaColumnForCard),
+                      _customCard(
+                          kSecondarColor, _leftTeaColumnForCard(context)),
                       getMobileMaxWidth(context),
                       getMobileMaxWidth(context),
                       Alignment.bottomLeft,
                     ),
                   ),
                 ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.09,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,7 +150,8 @@ class IntroPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   _cardContainer(
-                    _customCard(kSecondarColor, _rightCapsuleColumnForCard),
+                    _customCard(
+                        kSecondarColor, _rightCapsuleColumnForCard(context)),
                     getMobileMaxWidth(context),
                     getMobileMaxWidth(context),
                     Alignment.bottomLeft,
@@ -191,7 +196,7 @@ class IntroPage extends StatelessWidget {
                 bottom: 20,
                 left: 20,
                 child: _cardContainer(
-                    _customCard(kSecondarColor, _leftTeaColumnForCard),
+                    _customCard(kSecondarColor, _leftTeaColumnForCard(context)),
                     kTabletMaxWidth * 0.4,
                     kTabletMaxWidth * 0.4,
                     Alignment.bottomLeft),
@@ -204,7 +209,8 @@ class IntroPage extends StatelessWidget {
                     height: kTabletMaxWidth * 0.4,
                     padding: const EdgeInsets.all(8.0),
                     child: _cardContainer(
-                        _customCard(kSecondarColor, _rightCapsuleColumnForCard),
+                        _customCard(kSecondarColor,
+                            _rightCapsuleColumnForCard(context)),
                         kTabletMaxWidth * 0.4,
                         kTabletMaxWidth * 0.4,
                         Alignment.topRight)),
@@ -226,11 +232,11 @@ class IntroPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: child);
 
-  Widget get _leftTeaColumnForCard => Column(
+  Widget _leftTeaColumnForCard(BuildContext context) => Column(
         children: [
-          _cardListTile(Icons.medication, 'KIWY LEMON TEA', 'To your health',
+          _cardListTile(Icons.coffee_sharp, 'KIWY LEMON TEA', 'To your health',
               kPrimaryColor, kPrimaryColor, kCaptionColor),
-          _imageExpanded('assets/images/lemon.png'),
+          _imageExpanded('assets/images/lemon.png', context),
         ],
       );
 
@@ -244,11 +250,11 @@ class IntroPage extends StatelessWidget {
         child: child,
       );
 
-  Widget get _rightCapsuleColumnForCard => Column(
+  Widget _rightCapsuleColumnForCard(BuildContext context) => Column(
         children: [
-          _cardListTile(Icons.medication, 'KIWY CAPSULE', '', kPrimaryColor,
+          _cardListTile(Icons.medication, 'KIWY CAPSULE', null, kPrimaryColor,
               kPrimaryColor, kCaptionColor),
-          _imageExpanded('assets/images/kiwycapsule.png'),
+          _imageExpanded('assets/images/kiwycapsule.png', context),
         ],
       );
 
@@ -266,16 +272,16 @@ class IntroPage extends StatelessWidget {
           style: TextStyle(color: titleColor),
         ),
         subtitle: Text(
-          subtitleText ?? '',
+          subtitleText ?? 'lorem',
           style: TextStyle(color: subtitleColor),
         ),
       ),
     );
   }
 
-  Widget _imageExpanded(String image) {
+  Widget _imageExpanded(String image, BuildContext context) {
     return Expanded(
-      flex: 5,
+      flex: ScreenHelper.isMobile(context) ? 2 : 5,
       child: Image.asset(
         image,
         fit: BoxFit.contain,

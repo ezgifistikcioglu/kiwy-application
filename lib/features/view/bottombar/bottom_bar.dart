@@ -15,6 +15,14 @@ class BottomBar extends StatelessWidget {
       child: ScreenHelper.isMobile(context)
           ? Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: kBackgroundColor,
+                    width: double.maxFinite,
+                    height: 1,
+                  ),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -45,6 +53,14 @@ class BottomBar extends StatelessWidget {
             )
           : Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    color: kBackgroundColor,
+                    width: double.maxFinite,
+                    height: 1,
+                  ),
+                ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

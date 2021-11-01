@@ -17,8 +17,32 @@ double getMobileMaxWidth(BuildContext context) =>
     MediaQuery.of(context).size.width * 0.5;
 
 /// Strings
-const curveHeight = 30.0;
+const curveHeightDown = 20.0;
+const curveHeightTop = 45.0;
+const curveHeightDownMobile = 15.0;
+const curveHeightTopMobile = 20.0;
+const String emailHintText = "your@gmail.com";
+const String emailLabelText = "Email";
+const String subscribeText = "SUBSCRIBE";
+const String newsletterText1 = "GET 10% OFF";
+const String newsletterText2 =
+    "Subscribe to be the first to know when it comes to Kiwy's latest news, deals, and special offers when it comes to everything new.";
+const String newsletterText3 =
+    "(Enter your email and get 10% off your first order!)";
 
 /// SizedBox
 SizedBox get sizedBoxFive => const SizedBox(height: 5);
 SizedBox get sizedBoxTwenty => const SizedBox(height: 20);
+
+/// Repetitive
+BoxShadow emailContainerBoxShadow(Color color) =>
+    BoxShadow(color: color, offset: const Offset(0, 8), blurRadius: 8);
+
+TextStyle textStyleForEmailBox({double? fontSize, Color? color}) =>
+    TextStyle(fontSize: fontSize, color: color);
+
+Widget createIcon(IconData? icon, Color color, {double? size}) => Icon(
+      icon,
+      color: color,
+      size: size ?? 24.0,
+    );

@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:kiwy_app/core/constants/app_constants.dart';
 import 'package:kiwy_app/core/constants/globals.dart';
-import 'package:kiwy_app/core/init/widget/shape/custom_shape_border.dart';
+import 'package:kiwy_app/core/constants/screen_helper.dart';
+import 'package:kiwy_app/core/init/widget/shape/custom_shape_border_down.dart';
 import 'package:kiwy_app/features/view/bottombar/bottom_bar.dart';
 import 'package:kiwy_app/features/view/header.dart';
 import 'package:kiwy_app/features/view/intro.dart';
+
+import 'newsletter/newsletter.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,7 +19,11 @@ class Home extends StatelessWidget {
       key: Globals.scaffoldKey,
       appBar: AppBar(
         backgroundColor: kBlackColor,
-        shape: const CustomShapeBorder(curveHeight),
+        shape: CustomShapeBorderDown(
+            ScreenHelper.isMobile(context)
+                ? curveHeightDownMobile
+                : curveHeightDown,
+            context),
         flexibleSpace: Image.asset(
           'assets/images/cover.png',
           fit: BoxFit.fitWidth,
@@ -72,12 +79,13 @@ class Home extends StatelessWidget {
           children: [
             const Header(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.01,
+              height: MediaQuery.of(context).size.height * 0.002,
             ),
             const IntroPage(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
+            const Newsletter(),
             const BottomBar(),
           ],
         ),

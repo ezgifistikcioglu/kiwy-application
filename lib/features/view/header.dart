@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kiwy_app/core/constants/app_constants.dart';
 import 'package:kiwy_app/core/constants/screen_helper.dart';
-import 'package:kiwy_app/core/init/widget/shape/custom_shape_border.dart';
+import 'package:kiwy_app/core/init/widget/shape/custom_shape_border_top.dart';
 import 'package:responsive_framework/responsive_value.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-/// Add a list of booleans that will be used to track the hover
-/// (the number of booleans is the number of components you want to apply the hover effect to)
 List<bool> isHovering = [
   false,
   false,
@@ -28,27 +26,28 @@ class HeaderLogo extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: () {},
-        child: RichText(
-          text: TextSpan(
-            children: [
-              _textSpanWithPacifico("KIWY"),
-            ],
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                _textSpanWithPacifico("KIWY", context),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  TextSpan _textSpanWithPacifico(String text) {
-    return TextSpan(
-      text: text,
-      style: GoogleFonts.pacifico(
-        color: Colors.white,
-        fontSize: 32.0,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
+  TextSpan _textSpanWithPacifico(String text, BuildContext context) => TextSpan(
+        text: text,
+        style: GoogleFonts.pacifico(
+          color: Colors.white,
+          fontSize: ScreenHelper.isMobile(context) ? 20.0 : 32.0,
+          fontWeight: FontWeight.bold,
+        ),
+      );
 }
 
 class HeaderRow extends StatefulWidget {
@@ -169,7 +168,11 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: kSecondarColor,
-      shape: const CustomShapeBorder(curveHeight),
+      shape: CustomShapeBorderTop(
+          ScreenHelper.isMobile(context)
+              ? curveHeightTopMobile
+              : curveHeightTop,
+          context),
       borderOnForeground: true,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: ScreenHelper(
