@@ -8,220 +8,160 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.8,
-      width: MediaQuery.of(context).size.width,
-      child: ScreenHelper(
-        web: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 10,
-                child: _cardContainer(_knowledgeCard, kDesktopMaxWidth * 0.4,
-                    kDesktopMaxWidth * 0.3, Alignment.topLeft),
-              ),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'The Magic Power of Tea and Capsule',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w900, fontSize: 40),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 10,
-                left: 20,
-                child: _cardContainer(
-                    _customCard(kSecondarColor, _leftTeaColumnForCard(context)),
-                    kDesktopMaxWidth * 0.4,
-                    kDesktopMaxWidth * 0.4,
-                    Alignment.bottomLeft),
-              ),
-              Positioned(
-                top: 50,
-                right: 10,
-                child: Container(
-                    width: kDesktopMaxWidth * 0.4,
-                    height: kDesktopMaxWidth * 0.4,
-                    padding: const EdgeInsets.all(8.0),
-                    child: _cardContainer(
-                        _customCard(kSecondarColor,
-                            _rightCapsuleColumnForCard(context)),
-                        kDesktopMaxWidth * 0.4,
-                        kDesktopMaxWidth * 0.4,
-                        Alignment.topRight)),
-              ),
-              _introLeaf(context),
-            ],
-          ),
-        ),
-        mobile: Container(
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.06),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Stack(
-            fit: StackFit.loose,
-            alignment: Alignment.topRight,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'The Magic Power of Tea and Capsule',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: _cardContainer(
-                      _knowledgeCard,
-                      getMobileMaxWidth(context),
-                      getMobileMaxWidth(context),
-                      Alignment.topLeft,
-                    ),
-                  ),
-                  Expanded(
-                    child: _cardContainer(
-                      _customCard(
-                          kSecondarColor, _leftTeaColumnForCard(context)),
-                      getMobileMaxWidth(context),
-                      getMobileMaxWidth(context),
-                      Alignment.bottomLeft,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: RotationTransition(
-                            turns: AlwaysStoppedAnimation(
-                                (MediaQuery.of(context).size.width * 0.05) /
-                                    180),
-                            child: Image.asset(
-                              'assets/images/leafline.png',
-                              fit: BoxFit.fill,
-                            )),
-                      ),
-                      Expanded(
-                        child: RotationTransition(
-                            turns: AlwaysStoppedAnimation(
-                                (MediaQuery.of(context).size.height * 0.07) /
-                                    180),
-                            child: Image.asset(
-                              'assets/images/leafline.png',
-                              fit: BoxFit.fill,
-                            )),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.width * 0.09,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  _cardContainer(
-                    _customCard(
-                        kSecondarColor, _rightCapsuleColumnForCard(context)),
-                    getMobileMaxWidth(context),
-                    getMobileMaxWidth(context),
-                    Alignment.bottomLeft,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        tablet: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/bg.jpg"),
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                top: 20,
-                left: 10,
-                child: _cardContainer(
-                  _knowledgeCard,
-                  kTabletMaxWidth * 0.4,
-                  kTabletMaxWidth * 0.3,
-                  Alignment.topLeft,
-                ),
-              ),
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'The Magic Power of Tea and Capsule',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w900, fontSize: 30),
-                    ),
-                  ],
-                ),
-              ),
-              Positioned(
-                bottom: 20,
-                left: 20,
-                child: _cardContainer(
-                    _customCard(kSecondarColor, _leftTeaColumnForCard(context)),
-                    kTabletMaxWidth * 0.4,
-                    kTabletMaxWidth * 0.4,
-                    Alignment.bottomLeft),
-              ),
-              Positioned(
-                top: 50,
-                right: 10,
-                child: Container(
-                    width: kTabletMaxWidth * 0.4,
-                    height: kTabletMaxWidth * 0.4,
-                    padding: const EdgeInsets.all(8.0),
-                    child: _cardContainer(
-                        _customCard(kSecondarColor,
-                            _rightCapsuleColumnForCard(context)),
-                        kTabletMaxWidth * 0.4,
-                        kTabletMaxWidth * 0.4,
-                        Alignment.topRight)),
-              ),
-              _introLeaf(context),
-            ],
-          ),
-        ),
-      ),
+      height: getHeight(context) * 0.8,
+      width: getWidth(context),
+      child: ScreenHelper.isMobile(context)
+          ? _mobileColumn(context)
+          : _webColumn(context),
     );
   }
+
+  Widget _webColumn(BuildContext context) => Container(
+        padding: smallPadding(context),
+        decoration: _infoBgImage(BoxFit.fitWidth),
+        child: Stack(
+          children: [
+            _infoCardPositionTop(context),
+            Center(
+              child: Column(
+                children: [
+                  _introHeaderText(40),
+                ],
+              ),
+            ),
+            _teaPositionRight(
+              context,
+            ),
+            _capsulePositionLeft(
+                context,
+                _cardContainer(
+                    _customCard(
+                        kSecondarColor, _rightCapsuleColumnForCard(context)),
+                    kDesktopMaxWidth * 0.4,
+                    kDesktopMaxWidth * 0.4,
+                    Alignment.bottomLeft)),
+            sizedBoxTwenty,
+            _introLeaf(context),
+          ],
+        ),
+      );
+
+  Widget _mobileColumn(BuildContext context) => Container(
+        padding: smallPadding(context),
+        decoration: _infoBgImage(BoxFit.cover),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                _introHeaderText(30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _infoCard(context),
+                    _teaCard(context),
+                  ],
+                ),
+              ],
+            ),
+            _leafRotationColumn(context),
+            _capsulePositionLeft(
+              context,
+              _cardContainer(
+                _customCard(
+                    kSecondarColor, _rightCapsuleColumnForCard(context)),
+                getMobileMaxWidth(context),
+                getMobileMaxWidth(context),
+                Alignment.bottomLeft,
+              ),
+            )
+          ],
+        ),
+      );
+
+  BoxDecoration _infoBgImage(BoxFit? fit) => BoxDecoration(
+        image: DecorationImage(
+          image: const AssetImage("assets/images/bg.jpg"),
+          fit: fit,
+        ),
+      );
+
+  Widget _introHeaderText(double? fontSize) => Text(
+        introText,
+        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize),
+      );
+
+  Widget _leafRotationColumn(BuildContext context) => Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: _getRotation(
+                    context,
+                    _customAlwaysStoppedAnimation(
+                        context, (getWidth(context) * 0.05) / 180)),
+              ),
+              Expanded(
+                  child: _getRotation(
+                      context,
+                      _customAlwaysStoppedAnimation(
+                          context, (getHeight(context) * 0.07) / 180))),
+            ],
+          ),
+        ],
+      );
+
+  Widget _infoCardPositionTop(BuildContext context) => Positioned(
+        left: getWidth(context) * 0.01,
+        child: _cardContainer(_knowledgeCard, kDesktopMaxWidth * 0.4,
+            kDesktopMaxWidth * 0.3, Alignment.topLeft),
+      );
+
+  Widget _capsulePositionLeft(BuildContext context, Widget child) => Positioned(
+        bottom: getHeight(context) * 0.01,
+        left: getWidth(context) * 0.01,
+        child: child,
+      );
+
+  Widget _teaPositionRight(BuildContext context) => Positioned(
+      top: getHeight(context) * 0.01,
+      right: getWidth(context) * 0.01,
+      child: _cardContainer(
+          _customCard(kSecondarColor, _leftTeaColumnForCard(context)),
+          kDesktopMaxWidth * 0.4,
+          kDesktopMaxWidth * 0.4,
+          Alignment.topRight));
+
+  Widget _getRotation(BuildContext context, Animation<double> turns) =>
+      RotationTransition(turns: turns, child: _centerLeafImage);
+
+  AlwaysStoppedAnimation<double> _customAlwaysStoppedAnimation(
+          BuildContext context, double value) =>
+      AlwaysStoppedAnimation((value));
+
+  Widget _teaCard(BuildContext context) => Expanded(
+        child: _cardContainer(
+          _customCard(kSecondarColor, _leftTeaColumnForCard(context)),
+          getMobileMaxWidth(context),
+          getMobileMaxWidth(context),
+          Alignment.bottomLeft,
+        ),
+      );
+
+  Widget _infoCard(BuildContext context) => Expanded(
+        child: _cardContainer(
+          _knowledgeCard,
+          getMobileMaxWidth(context),
+          getMobileMaxWidth(context),
+          Alignment.topLeft,
+        ),
+      );
+
+  Widget get _centerLeafImage => Image.asset(
+        'assets/images/leafline.png',
+        fit: BoxFit.fill,
+      );
 
   Widget _cardContainer(Widget? child, double cWidth, double cHeight,
           AlignmentGeometry alignment) =>
@@ -259,25 +199,24 @@ class IntroPage extends StatelessWidget {
       );
 
   Widget _cardListTile(IconData? icon, String titleText, String? subtitleText,
-      Color? iconColor, Color? titleColor, Color? subtitleColor) {
-    return Expanded(
-      flex: 1,
-      child: ListTile(
-        leading: Icon(
-          icon,
-          color: iconColor,
+          Color? iconColor, Color? titleColor, Color? subtitleColor) =>
+      Expanded(
+        flex: 1,
+        child: ListTile(
+          leading: Icon(
+            icon,
+            color: iconColor,
+          ),
+          title: Text(
+            titleText,
+            style: TextStyle(color: titleColor),
+          ),
+          subtitle: Text(
+            subtitleText ?? 'lorem',
+            style: TextStyle(color: subtitleColor),
+          ),
         ),
-        title: Text(
-          titleText,
-          style: TextStyle(color: titleColor),
-        ),
-        subtitle: Text(
-          subtitleText ?? 'lorem',
-          style: TextStyle(color: subtitleColor),
-        ),
-      ),
-    );
-  }
+      );
 
   Widget _imageExpanded(String image, BuildContext context) {
     return Expanded(
@@ -293,20 +232,16 @@ class IntroPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          RotationTransition(
-              turns: AlwaysStoppedAnimation(
-                  (MediaQuery.of(context).size.width * 0.03) / 180),
-              child: Image.asset(
-                'assets/images/leafline.png',
-                fit: BoxFit.fill,
-              )),
-          RotationTransition(
-              turns: AlwaysStoppedAnimation(
-                  (MediaQuery.of(context).size.width * 0.08) / 180),
-              child: Image.asset(
-                'assets/images/leafline.png',
-                fit: BoxFit.fill,
-              )),
+          _getRotation(
+            context,
+            _customAlwaysStoppedAnimation(
+                context, (getWidth(context) * 0.03) / 180),
+          ),
+          _getRotation(
+            context,
+            _customAlwaysStoppedAnimation(
+                context, (getWidth(context) * 0.08) / 180),
+          ),
         ],
       );
 

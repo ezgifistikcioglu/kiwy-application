@@ -5,7 +5,7 @@ import 'package:kiwy_app/core/constants/globals.dart';
 import 'package:kiwy_app/core/constants/screen_helper.dart';
 import 'package:kiwy_app/core/init/widget/shape/custom_shape_border_down.dart';
 import 'package:kiwy_app/features/view/bottombar/bottom_bar.dart';
-import 'package:kiwy_app/features/view/header.dart';
+import 'package:kiwy_app/features/view/header/header.dart';
 import 'package:kiwy_app/features/view/intro.dart';
 
 import 'newsletter/newsletter.dart';
@@ -79,11 +79,11 @@ class Home extends StatelessWidget {
           children: [
             const Header(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.002,
+              height: getHeight(context) * 0.002,
             ),
             const IntroPage(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: getHeight(context) * 0.03,
             ),
             const Newsletter(),
             const BottomBar(),

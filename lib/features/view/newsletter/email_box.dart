@@ -12,13 +12,14 @@ class EmailBox extends StatelessWidget {
     return Padding(
       padding: _emailBoxPadding(context),
       child: Container(
-        height: MediaQuery.of(context).size.width * 0.03,
-        width: MediaQuery.of(context).size.height * 0.7,
+        height: ScreenHelper.isMobile(context)
+            ? getWidth(context) * 0.09
+            : getWidth(context) * 0.02,
+        width: getHeight(context) * 0.8,
         decoration: _emailContainerBoxDecoration,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: EdgeInsets.symmetric(horizontal: getWidth(context) * 0.02),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [_emailTextAndIcon(context), _subscribeButton],
           ),
         ),
@@ -32,7 +33,7 @@ class EmailBox extends StatelessWidget {
       boxShadow: [emailContainerBoxShadow(kSecondaryColor)]);
 
   EdgeInsets _emailBoxPadding(BuildContext context) => EdgeInsets.only(
-        left: MediaQuery.of(context).size.height * 0.01,
+        left: getHeight(context) * 0.01,
       );
 
   Widget _emailTextAndIcon(BuildContext context) => Expanded(
@@ -51,17 +52,13 @@ class EmailBox extends StatelessWidget {
         border: InputBorder.none,
         hintText: emailHintText,
         labelText: emailLabelText,
-        labelStyle: textStyleForEmailBox(
-            fontSize: ScreenHelper.isMobile(context) ? 13 : 20,
-            color: kBackgroundColor),
-        hintStyle: textStyleForEmailBox(
-            fontSize: ScreenHelper.isMobile(context) ? 13 : 15,
-            color: kGrayColor),
+        labelStyle: textStyleForEmailBox(fontSize: 18, color: kBackgroundColor),
+        hintStyle: textStyleForEmailBox(fontSize: 15, color: kGrayColor),
         prefixIcon: createIcon(Icons.mail_outline_rounded, kGrayColor),
       );
 
   Widget get _subscribeButton => const Expanded(
         flex: 3,
-        child: Center(child: SubscribeButton()),
+        child: SubscribeButton(),
       );
 }

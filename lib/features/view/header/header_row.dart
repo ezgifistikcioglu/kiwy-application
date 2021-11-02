@@ -1,54 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:kiwy_app/core/constants/app_constants.dart';
-import 'package:kiwy_app/core/constants/screen_helper.dart';
-import 'package:kiwy_app/core/init/widget/shape/custom_shape_border_top.dart';
 import 'package:responsive_framework/responsive_value.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 
-List<bool> isHovering = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false
-];
-
-class HeaderLogo extends StatelessWidget {
-  const HeaderLogo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: RichText(
-            text: TextSpan(
-              children: [
-                _textSpanWithPacifico("KIWY", context),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  TextSpan _textSpanWithPacifico(String text, BuildContext context) => TextSpan(
-        text: text,
-        style: GoogleFonts.pacifico(
-          color: Colors.white,
-          fontSize: ScreenHelper.isMobile(context) ? 20.0 : 32.0,
-          fontWeight: FontWeight.bold,
-        ),
-      );
-}
+import 'header.dart';
 
 class HeaderRow extends StatefulWidget {
   const HeaderRow({Key? key}) : super(key: key);
@@ -60,7 +15,7 @@ class HeaderRow extends StatefulWidget {
 class _HeaderRowState extends State<HeaderRow> {
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double width = getWidth(context);
     return ResponsiveVisibility(
       visible: false,
       visibleWhen: const [
@@ -68,7 +23,7 @@ class _HeaderRowState extends State<HeaderRow> {
       ],
       child: Expanded(
         child: Padding(
-          padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.01),
+          padding: EdgeInsets.all(getHeight(context) * 0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -156,66 +111,6 @@ class _HeaderRowState extends State<HeaderRow> {
         height: 2,
         width: 20,
         color: Colors.white,
-      ),
-    );
-  }
-}
-
-class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: kSecondarColor,
-      shape: CustomShapeBorderTop(
-          ScreenHelper.isMobile(context)
-              ? curveHeightTopMobile
-              : curveHeightTop,
-          context),
-      borderOnForeground: true,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: ScreenHelper(
-        web: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: MediaQuery.of(context).size.height * 0.02),
-          child: buildHeader(context),
-        ),
-        // We will make this in a bit
-        mobile: buildMobileHeader(context),
-        tablet: buildHeader(context),
-      ),
-    );
-  }
-
-  // Lets plan for mobile and smaller width screens
-  Widget buildHeader(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            HeaderLogo(),
-            HeaderRow(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // mobile header
-  Widget buildMobileHeader(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding:
-            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.02),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            Center(child: HeaderLogo()),
-          ],
-        ),
       ),
     );
   }

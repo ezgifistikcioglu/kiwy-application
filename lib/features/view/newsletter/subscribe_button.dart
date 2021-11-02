@@ -9,8 +9,8 @@ class SubscribeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.04,
-        width: MediaQuery.of(context).size.width / 0.5,
+        height: getHeight(context) * 0.04,
+        width: getWidth(context) / 0.5,
         decoration: _subscribeDecoration,
         child: Material(
           color: Colors.transparent,
@@ -37,14 +37,17 @@ class SubscribeButton extends StatelessWidget {
 
   Widget _subscribeTextAndIcon(BuildContext context) => Center(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(child: _subscribeText(context)),
+            _subscribeText(context),
             Expanded(
-              child: createIcon(Icons.touch_app, kSecondarColor,
-                  size: ScreenHelper.isMobile(context)
-                      ? MediaQuery.of(context).size.width * 0.01
-                      : MediaQuery.of(context).size.width * 0.02),
+              child: Center(
+                child: createIcon(Icons.touch_app, kSecondarColor,
+                    size: ScreenHelper.isMobile(context)
+                        ? getWidth(context) * 0.05
+                        : getWidth(context) * 0.02),
+              ),
             )
           ],
         ),
@@ -53,7 +56,7 @@ class SubscribeButton extends StatelessWidget {
   Widget _subscribeText(BuildContext context) => Text(
         subscribeText,
         style: textStyleForEmailBox(
-            fontSize: ScreenHelper.isMobile(context) ? 13 : 20,
+            fontSize: ScreenHelper.isMobile(context) ? 14 : 20,
             color: kCaptionColor),
       );
 }

@@ -10,18 +10,15 @@ class Newsletter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: getHeight(context) * 0.5,
       child: ScreenHelper.isMobile(context)
-          ? Stack(fit: StackFit.expand, children: <Widget>[
+          ? Stack(fit: StackFit.expand, children: [
               newsletterImageMobile(context),
               newsletterTextForMobile(context)
             ])
           : Stack(
               fit: StackFit.expand,
-              children: <Widget>[
-                newsletterImage(context),
-                newsletterText(context)
-              ],
+              children: [newsletterImage(context), newsletterText(context)],
             ),
     );
   }
@@ -52,10 +49,11 @@ class Newsletter extends StatelessWidget {
   /// Add newsletter Image
   Widget newsletterImageMobile(BuildContext context) {
     return FractionallySizedBox(
-        alignment: Alignment.topRight, //to keep images aligned to right
-        widthFactor: .51,
+        alignment: Alignment.centerRight, //to keep images aligned to right
+        widthFactor: .50,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Expanded(
               child: Image.asset(
@@ -78,8 +76,7 @@ class Newsletter extends StatelessWidget {
       alignment: Alignment.centerLeft,
       widthFactor: .49,
       child: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.05, right: 18),
+        padding: EdgeInsets.only(left: getWidth(context) * 0.05, right: 18),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,21 +103,22 @@ class Newsletter extends StatelessWidget {
   Widget newsletterTextForMobile(BuildContext context) {
     return FractionallySizedBox(
       alignment: Alignment.centerLeft,
-      widthFactor: .70,
+      widthFactor: .75,
       child: Padding(
-        padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.05, right: 18),
+        padding: EdgeInsets.only(left: getWidth(context) * 0.01),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            createIcon(Icons.filter_vintage_sharp, kGrayColor, size: 40),
+            createIcon(Icons.filter_vintage_sharp, kGrayColor, size: 50),
             Row(
               children: [
                 Expanded(
-                  child: Text(newsletterText1,
-                      style:
-                          newsletterTextStyle(kSecondaryColor, 30, null, null)),
+                  child: Center(
+                    child: Text(newsletterText1,
+                        style: newsletterTextStyle(
+                            kSecondaryColor, 30, null, null)),
+                  ),
                 ),
               ],
             ),
@@ -128,9 +126,11 @@ class Newsletter extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Text(newsletterText2,
-                      style: newsletterTextStyle(
-                          kGrayColor, 20, null, FontWeight.bold)),
+                  child: Center(
+                    child: Text(newsletterText2,
+                        style: newsletterTextStyle(
+                            kGrayColor, 20, null, FontWeight.bold)),
+                  ),
                 ),
               ],
             ),
@@ -138,14 +138,16 @@ class Newsletter extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Text(newsletterText3,
-                      style: newsletterTextStyle(
-                          kSecondaryColor, 15, FontStyle.italic, null)),
+                  child: Center(
+                    child: Text(newsletterText3,
+                        style: newsletterTextStyle(
+                            kSecondaryColor, 15, FontStyle.italic, null)),
+                  ),
                 ),
               ],
             ),
-            sizedBoxFive,
-            const EmailBox()
+            sizedBoxTwenty,
+            const Center(child: EmailBox())
           ],
         ),
       ),

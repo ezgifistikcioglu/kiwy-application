@@ -13,14 +13,13 @@ const Color kGrayColor = Color.fromRGBO(163, 177, 187, 1);
 /// Lets replace all static sizes
 const double kDesktopMaxWidth = 1000.0;
 const double kTabletMaxWidth = 760.0;
-double getMobileMaxWidth(BuildContext context) =>
-    MediaQuery.of(context).size.width * 0.5;
+const double curveHeightDown = 20.0;
+const double curveHeightTop = 45.0;
+const double curveHeightDownMobile = 15.0;
+const double curveHeightTopMobile = 20.0;
 
 /// Strings
-const curveHeightDown = 20.0;
-const curveHeightTop = 45.0;
-const curveHeightDownMobile = 15.0;
-const curveHeightTopMobile = 20.0;
+const String introText = "The Magic Power of Tea and Capsule";
 const String emailHintText = "your@gmail.com";
 const String emailLabelText = "Email";
 const String subscribeText = "SUBSCRIBE";
@@ -29,6 +28,13 @@ const String newsletterText2 =
     "Subscribe to be the first to know when it comes to Kiwy's latest news, deals, and special offers when it comes to everything new.";
 const String newsletterText3 =
     "(Enter your email and get 10% off your first order!)";
+
+/// MediaQuery
+double getMobileMaxWidth(BuildContext context) =>
+    MediaQuery.of(context).size.width * 0.5;
+
+double getWidth(BuildContext context) => MediaQuery.of(context).size.width;
+double getHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
 /// SizedBox
 SizedBox get sizedBoxFive => const SizedBox(height: 5);
@@ -46,3 +52,5 @@ Widget createIcon(IconData? icon, Color color, {double? size}) => Icon(
       color: color,
       size: size ?? 24.0,
     );
+EdgeInsetsGeometry smallPadding(BuildContext context) =>
+    EdgeInsets.only(top: getHeight(context) * 0.01);
