@@ -53,7 +53,7 @@ class IntroPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                _introHeaderText(30),
+                _introHeaderText(25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

@@ -16,15 +16,13 @@ class DefaultButton extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            elevation: 10,
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-            primary: kPrimaryColor),
+        style:
+            ElevatedButton.styleFrom(elevation: 10, primary: kBackgroundColor),
         onPressed: press,
         child: Text(text!.toUpperCase(),
             style: GoogleFonts.architectsDaughter(
                 textStyle: const TextStyle(
-                    fontSize: 30,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
                     color: Color(0xff000000)))),
       ),

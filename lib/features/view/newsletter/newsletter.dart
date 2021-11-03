@@ -153,12 +153,4 @@ class Newsletter extends StatelessWidget {
       ),
     );
   }
-
-  TextStyle newsletterTextStyle(Color? color, double? fontSize,
-          FontStyle? fontStyle, FontWeight? fontWeight) =>
-      TextStyle(
-          color: color,
-          fontStyle: fontStyle ?? FontStyle.normal,
-          fontSize: fontSize ?? 20,
-          fontWeight: fontWeight ?? FontWeight.normal);
 }

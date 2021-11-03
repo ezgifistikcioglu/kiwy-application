@@ -46,7 +46,13 @@ BoxShadow emailContainerBoxShadow(Color color) =>
 
 TextStyle textStyleForEmailBox({double? fontSize, Color? color}) =>
     TextStyle(fontSize: fontSize, color: color);
-
+TextStyle newsletterTextStyle(Color? color, double? fontSize,
+        FontStyle? fontStyle, FontWeight? fontWeight) =>
+    TextStyle(
+        color: color,
+        fontStyle: fontStyle ?? FontStyle.normal,
+        fontSize: fontSize ?? 20,
+        fontWeight: fontWeight ?? FontWeight.normal);
 Widget createIcon(IconData? icon, Color color, {double? size}) => Icon(
       icon,
       color: color,

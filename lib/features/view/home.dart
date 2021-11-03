@@ -7,6 +7,7 @@ import 'package:kiwy_app/core/init/widget/shape/custom_shape_border_down.dart';
 import 'package:kiwy_app/features/view/bottombar/bottom_bar.dart';
 import 'package:kiwy_app/features/view/header/header.dart';
 import 'package:kiwy_app/features/view/intro.dart';
+import 'package:kiwy_app/features/view/shopping/products_listing/products_listing.dart';
 
 import 'newsletter/newsletter.dart';
 
@@ -85,6 +86,7 @@ class Home extends StatelessWidget {
             SizedBox(
               height: getHeight(context) * 0.03,
             ),
+            const ProductsListing(),
             const Newsletter(),
             const BottomBar(),
           ],
